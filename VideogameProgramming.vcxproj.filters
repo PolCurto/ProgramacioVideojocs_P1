@@ -171,5 +171,8 @@
     <Image Include="Textures\main_character.png">
       <Filter>Archivos de recursos\Textures</Filter>
     </Image>
+    <Image Include="Textures\enemy.png">
+      <Filter>Archivos de recursos\Textures</Filter>
+    </Image>
   </ItemGroup>
 </Project>

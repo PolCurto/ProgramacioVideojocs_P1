@@ -55,7 +55,7 @@ void SetupGLFW() {
 
 bool SetupWindow() {
 	//Create a GLFWwindow with size 800x800
-	window = glfwCreateWindow(800, 800, "ProgramacioVideojocs", NULL, NULL);
+	window = glfwCreateWindow(800, 800, "Goty", NULL, NULL);
 	if (window == NULL) {
 
 		std::cout << "Failed to create GLFW window" << std::endl;
@@ -98,8 +98,8 @@ void SetupWorld() {
 
 	Entity* bg_ent = CreateEntity(glm::vec2(400.f, 400.f), 0.f, 1.f, "Textures/background_brown.png", glm::vec3(1., 1., 1.), false, glm::vec2(width, height), "repeating");
 
-	Entity* paddle_ent = CreateEntity(glm::vec2(400.f, 700.f), 0.f, 1.f, "Textures/main_character.png", glm::vec3(1., 1., 1.));
-	paddle_ent->assign<BoxCollider>(128.f, 53.f);
+	Entity* paddle_ent = CreateEntity(glm::vec2(400.f, 400.f), 0.f, 1.f, "Textures/main_character.png", glm::vec3(1., 1., 1.));
+	paddle_ent->assign<BoxCollider>(80.f, 80.f);
 
 	Entity* ball_ent = CreateEntity(glm::vec2(400.f, 300.f), 0.f, 1.f, "Textures/ball_blue_small.png", glm::vec3(1., 1., 1.));
 	ball_ent->assign<BoxCollider>(32.f, 32.f);
@@ -112,10 +112,10 @@ void SetupWorld() {
 	PaddleScript* paddle_script = new PaddleScript(window, world, paddle_ent);
 	paddle_ent->assign<ScriptComponent>(scriptManager->AddScript(paddle_script));
 
-	for (int i = 0; i < 5; i++) {
-		for (int j = 0; j < 3; j++) {
-			Entity* block_ent = CreateEntity(glm::vec2(140.f + 128.f * i, 100.f + 53.f * j), 0.f, 1.f, "Textures/button_blue.png", glm::vec3(1., 1., 1.));
-			block_ent->assign<BoxCollider>(128.f, 53.f);
+	for (int i = 0; i < 2; i++) {
+		for (int j = 0; j < 2; j++) {
+			Entity* block_ent = CreateEntity(glm::vec2(200.f + 400.f * i, 200.f + 400.f * j), 0.f, 1.f, "Textures/enemy.png", glm::vec3(1., 1., 1.));
+			block_ent->assign<BoxCollider>(80.f, 80.f);
 
 			BlockScript* block_script = new BlockScript(window, world, block_ent);
 			block_ent->assign<ScriptComponent>(scriptManager->AddScript(block_script));
