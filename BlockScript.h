@@ -16,7 +16,7 @@ public:
     void Break();
 
 private:
-    int hp = 1;
+    int hp = 2;
     bool destroyed = false;
 
 };

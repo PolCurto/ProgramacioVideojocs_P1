@@ -18,4 +18,16 @@ void PaddleScript::tickScript(float deltaTime) {
 
 		if (transform->position.x < 50) transform->position.x = 50;
 	}
+
+	if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
+		transform->position += glm::vec2(0., -1.) * deltaTime / 2.f;
+
+		if (transform->position.x > 750) transform->position.x = 750;
+	}
+
+	if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) {
+		transform->position += glm::vec2(0., 1.) * deltaTime / 2.f;
+
+		if (transform->position.x < 50) transform->position.x = 50;
+	}
 }
