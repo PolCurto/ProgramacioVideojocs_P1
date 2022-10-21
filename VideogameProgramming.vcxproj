@@ -80,8 +80,8 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>A:\Uni\3r\ProgramacioVideojocs\Programacio-Videojocs-8-ECS\VideogameProgramming\Libraries\include;$(IncludePath)</IncludePath>
-    <LibraryPath>A:\Uni\3r\ProgramacioVideojocs\Programacio-Videojocs-8-ECS\VideogameProgramming\Libraries\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>A:\Uni\3r\ProgramacioVideojocs\P1\P1\Libraries\include;$(IncludePath)</IncludePath>
+    <LibraryPath>A:\Uni\3r\ProgramacioVideojocs\P1\P1\Libraries\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -193,6 +193,7 @@
     <Image Include="Textures\ball_blue_small.png" />
     <Image Include="Textures\button_blue.png" />
     <Image Include="Textures\button_yellow.png" />
+    <Image Include="Textures\main_character.png" />
     <Image Include="Textures\science_dog.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
