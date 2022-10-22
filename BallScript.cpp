@@ -12,13 +12,10 @@ void BallScript::tickScript(float deltaTime) {
 
 	transform->position += currDir * deltaTime / 2.f;
 
-	if (transform->position.x < 0 && currDir.x < 0) currDir.x *= -1;
+	if (transform->position.x < 100 && currDir.x < 0) currDir.x *= -1;
 	if (transform->position.x > limits.x && currDir.x > 0) currDir.x *= -1;
-	if (transform->position.y < 0 && currDir.y < 0) currDir.y *= -1;
-	if (transform->position.y > limits.y && currDir.y > 0) {
-		currDir = glm::vec2(0.f, 1.f);
-		transform->position = glm::vec2(400.f, 400.f);
-	}
+	if (transform->position.y < 100 && currDir.y < 0) currDir.y *= -1;
+	if (transform->position.y > limits.y && currDir.y > 0) currDir.y *= -1;
 
 	CheckCollisions();
 

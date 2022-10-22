@@ -195,6 +195,7 @@
     <Image Include="Textures\button_yellow.png" />
     <Image Include="Textures\enemy.png" />
     <Image Include="Textures\main_character.png" />
+    <Image Include="Textures\Room.png" />
     <Image Include="Textures\science_dog.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

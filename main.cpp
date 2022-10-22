@@ -34,7 +34,7 @@ using std::chrono::system_clock;
 using namespace ECS;
 
 GLFWwindow* window; // Game window
-const unsigned int width = 800;
+const unsigned int width = 1600;
 const unsigned int height = 800;
 
 float t = 0;
@@ -55,7 +55,7 @@ void SetupGLFW() {
 
 bool SetupWindow() {
 	//Create a GLFWwindow with size 800x800
-	window = glfwCreateWindow(800, 800, "Goty", NULL, NULL);
+	window = glfwCreateWindow(width, height, "Goty", NULL, NULL);
 	if (window == NULL) {
 
 		std::cout << "Failed to create GLFW window" << std::endl;
@@ -96,7 +96,7 @@ void SetupWorld() {
 
 	ScriptManager* scriptManager = scriptSystem->getScriptManager();
 
-	Entity* bg_ent = CreateEntity(glm::vec2(400.f, 400.f), 0.f, 1.f, "Textures/background_brown.png", glm::vec3(1., 1., 1.), false, glm::vec2(width, height), "repeating");
+	Entity* bg_ent = CreateEntity(glm::vec2(800.f, 400.f), 0.f, 1.f, "Textures/room.png", glm::vec3(1., 1., 1.), false, glm::vec2(width, height));
 
 	Entity* paddle_ent = CreateEntity(glm::vec2(400.f, 400.f), 0.f, 1.f, "Textures/main_character.png", glm::vec3(1., 1., 1.));
 	paddle_ent->assign<BoxCollider>(80.f, 80.f);
