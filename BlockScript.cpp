@@ -6,14 +6,14 @@ void BlockScript::setParameters(Entity* obj, int secs) {
 
 }
 
-void BlockScript::moveToTarget() {
+void BlockScript::moveToTarget(float deltaTime) {
 
 	ComponentHandle<Transform> posObj = entity->get<Transform>();
 	ComponentHandle<Transform> posTarget = target->get<Transform>();
 
 	if (!notSpawned) {
 		currDir = glm::normalize(posObj->position - posTarget->position);
-		posObj->position -= currDir;
+		posObj->position -= currDir * deltaTime / 2.f;
 	}
 
 }
@@ -23,7 +23,6 @@ void BlockScript::spawn() {
 	
 	if (notSpawned) {
 		if (glfwGetTime() > delay) {
-			cout << "hola" << endl;
 
 			if (rand() % 100 > 50) {
 				posObj->position.x = 200;
@@ -55,6 +54,6 @@ void BlockScript::tickScript(float deltaTime) {
 	}
 
 	spawn();
-	moveToTarget();
+	moveToTarget(deltaTime);
 
 }

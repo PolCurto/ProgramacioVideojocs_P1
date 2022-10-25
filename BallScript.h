@@ -21,5 +21,6 @@ private:
 
     glm::vec2 currDir = glm::vec2(0., 1.);
     glm::vec2 limits = glm::vec2(1500., 700.);
+    bool destroyed = false;
 
 };

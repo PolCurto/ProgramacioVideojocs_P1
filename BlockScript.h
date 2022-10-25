@@ -13,7 +13,7 @@ public:
 
     void setParameters(Entity* onj, int secs);
 
-    void moveToTarget();
+    void moveToTarget(float deltaTime);
 
     void spawn();
 
