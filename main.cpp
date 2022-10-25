@@ -107,21 +107,17 @@ void SetupWorld() {
 	BallScript* ball_script = new BallScript(window, world, ball_ent);
 	ball_ent->assign<ScriptComponent>(scriptManager->AddScript(ball_script));
 
-	scriptManager->tickScript(0, 0);
-
 	PaddleScript* paddle_script = new PaddleScript(window, world, paddle_ent);
 	paddle_ent->assign<ScriptComponent>(scriptManager->AddScript(paddle_script));
 
-	for (int i = 0; i < 2; i++) {
-		for (int j = 0; j < 2; j++) {
-			Entity* block_ent = CreateEntity(glm::vec2(200.f + 400.f * i, 200.f + 400.f * j), 0.f, 1.f, "Textures/enemy.png", glm::vec3(1., 1., 1.));
-			block_ent->assign<BoxCollider>(80.f, 80.f);
+	for (int i = 0; i < 10; i++) {
+		Entity* block_ent = CreateEntity(glm::vec2(2000.f, 2000.f), 0.f, 1.f, "Textures/enemy.png", glm::vec3(1., 1., 1.));
+		block_ent->assign<BoxCollider>(80.f, 80.f);
 
-			BlockScript* block_script = new BlockScript(window, world, block_ent);
-			block_ent->assign<ScriptComponent>(scriptManager->AddScript(block_script));
-		}
+		BlockScript* block_script = new BlockScript(window, world, block_ent);
+		block_script->setParameters(paddle_ent, 5 * (1 + i));
+		block_ent->assign<ScriptComponent>(scriptManager->AddScript(block_script));
 	}
-	
 }
 
 int main() {
@@ -150,9 +146,6 @@ int main() {
 		if (dt < 50) {
 			world->tick(dt);
 		}
-
-		std::cout << "tick" << std::endl;
-		std::cout << dt << std::endl;
 
 		glfwSwapBuffers(window); //Swap buffers
 

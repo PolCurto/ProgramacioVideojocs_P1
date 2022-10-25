@@ -10,16 +10,12 @@ int ScriptManager::AddScript(Script* script) {
 
     autoinc += 1;
 
-    cout << "Adding script " + std::to_string(scripts.size() - 1) << endl;
-
     return scripts.size() - 1;
 
     
 }
 
 void ScriptManager::tickScript(int scriptId, float deltaTime) {
-
-    cout << "Ticking script " + std::to_string(scriptId) << endl;
 
     scripts[scriptId]->tickScript(deltaTime);
 }

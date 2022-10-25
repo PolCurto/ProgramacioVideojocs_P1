@@ -7,15 +7,11 @@ Script::Script(GLFWwindow* window, World* world, Entity* entity) {
 }
 
 void Script::startScript()
-{
-	
-	cout << "start" << endl;
-	
+{	
 }
 
 void Script::tickScript(float deltaTime)
 {
-	cout << "update" << endl;
 }
 
 void Script::Delete() {
