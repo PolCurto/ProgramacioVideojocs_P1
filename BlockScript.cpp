@@ -45,7 +45,6 @@ void BlockScript::tickScript(float deltaTime) {
 	ComponentHandle<Sprite> spr = entity->get<Sprite>();
 
 	if (collider->collidedWith) {
-		cout << hp << endl;
 		collider->collidedWith = false;
 		hp--;
 
@@ -67,5 +66,34 @@ void BlockScript::tickScript(float deltaTime) {
 
 	spawn();
 	moveToTarget(deltaTime);
+	checkCollisions();
 
+}
+
+void BlockScript::checkCollisions() {
+
+	ComponentHandle<Transform> transform = entity->get<Transform>();
+	ComponentHandle<BoxCollider> collider = entity->get<BoxCollider>();
+
+	world->each<BoxCollider>([&](Entity* other_ent, ComponentHandle<BoxCollider> other_collider) {
+
+		if (!(other_ent->getEntityId() == target->getEntityId())) {
+			return;
+		}
+
+		ComponentHandle<Transform> other_transform = other_ent->get<Transform>();
+
+		glm::vec2 p1 = transform->position;
+		glm::vec2 p2 = other_transform->position;
+
+		if (p1.x - collider->width / 2 < p2.x + other_collider->width / 2 &&
+			p1.x + collider->width / 2 > p2.x - other_collider->width / 2 &&
+			p1.y - collider->height / 2 < p2.y + other_collider->height / 2 &&
+			p1.y + collider->height / 2 > p2.y - other_collider->height / 2)
+		{
+			world->destroy(entity);
+			destroyed = true;
+			other_collider->collidedWith = true;
+		}
+		});
 }

@@ -189,16 +189,17 @@
     <ClInclude Include="VBO.h" />
   </ItemGroup>
   <ItemGroup>
-    <Image Include="Textures\background_brown.png" />
-    <Image Include="Textures\ball_blue_small.png" />
-    <Image Include="Textures\button_blue.png" />
-    <Image Include="Textures\button_yellow.png" />
     <Image Include="Textures\enemy 1.png" />
     <Image Include="Textures\enemy 2.png" />
     <Image Include="Textures\enemy 3.png" />
-    <Image Include="Textures\main_character.png" />
+    <Image Include="Textures\main_character 1.png" />
+    <Image Include="Textures\main_character 2.png" />
+    <Image Include="Textures\main_character 3.png" />
+    <Image Include="Textures\projectile.png" />
+    <Image Include="Textures\projectile_down.png" />
+    <Image Include="Textures\projectile_left.png" />
+    <Image Include="Textures\projectile_up.png" />
     <Image Include="Textures\Room.png" />
-    <Image Include="Textures\science_dog.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

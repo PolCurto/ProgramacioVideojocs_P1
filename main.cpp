@@ -96,13 +96,13 @@ void SetupWorld() {
 
 	Entity* bg_ent = CreateEntity(glm::vec2(800.f, 400.f), 0.f, 1.f, "Textures/room.png", glm::vec3(1., 1., 1.), false, glm::vec2(width, height));
 
-	Entity* paddle_ent = CreateEntity(glm::vec2(400.f, 400.f), 0.f, 1.f, "Textures/main_character.png", glm::vec3(1., 1., 1.));
+	Entity* paddle_ent = CreateEntity(glm::vec2(400.f, 400.f), 0.f, 1.f, "Textures/main_character 1.png", glm::vec3(1., 1., 1.));
 	paddle_ent->assign<BoxCollider>(80.f, 80.f);
 
 	PaddleScript* paddle_script = new PaddleScript(window, world, paddle_ent);
 	paddle_ent->assign<ScriptComponent>(scriptManager->AddScript(paddle_script));
 
-	Entity* ball_ent = CreateEntity(glm::vec2(1000.f, 1100.f), 0.f, 1.f, "Textures/ball_blue_small.png", glm::vec3(1., 1., 1.));
+	Entity* ball_ent = CreateEntity(glm::vec2(-100.f, -100.f), 0.f, 1.f, "Textures/projectile_right.png", glm::vec3(1., 1., 1.));
 	ball_ent->assign<BoxCollider>(32.f, 32.f);
 
 	BallScript* ball_script = new BallScript(window, world, ball_ent);

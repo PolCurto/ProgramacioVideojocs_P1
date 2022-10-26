@@ -5,6 +5,10 @@ void PaddleScript::startScript() {
 
 void PaddleScript::tickScript(float deltaTime) {
 
+	if (!alive) {
+		return;
+	}
+
 	ComponentHandle<Transform> transform = entity->get<Transform>();
 	
 	if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) {
@@ -30,4 +34,37 @@ void PaddleScript::tickScript(float deltaTime) {
 
 		if (transform->position.y > 700) transform->position.y = 700;
 	}
+
+	checkHits();
+}
+
+void PaddleScript::checkHits() {
+
+	ComponentHandle<BoxCollider> collider = entity->get<BoxCollider>();
+	ComponentHandle<Transform> transform = entity->get<Transform>();
+	ComponentHandle<Sprite> spr = entity->get<Sprite>();
+
+	if (collider->collidedWith) {
+		collider->collidedWith = false;
+		hp--;
+
+		if (hp == 2) {
+			spr->filepath = "Textures/main_character 2.png";
+			stage = 2;
+		}
+
+		if (hp == 1) {
+			spr->filepath = "Textures/main_character 3.png";
+			stage = 3;
+		}
+
+		if (hp <= 0) {
+			transform->position = glm::vec2(-100.f, -100.f);
+			alive = false;
+		}
+	}
+}
+
+bool PaddleScript::isAlive() {
+	return alive;
 }

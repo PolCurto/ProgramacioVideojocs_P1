@@ -15,4 +15,13 @@ public:
 
     void tickScript(float deltaTime) override;
 
+    void checkHits();
+
+    bool isAlive();
+
+private:
+
+    int hp = 3;
+    bool alive = true;
+    float stage = 1;
 };

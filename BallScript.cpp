@@ -11,31 +11,35 @@ void BallScript::controlShoot() {
 
 	ComponentHandle<Transform> transform = entity->get<Transform>();
 	ComponentHandle<Transform> posPlayer = player->get<Transform>();
-	
+	ComponentHandle<Sprite> spr = entity->get<Sprite>();
 
 	if (shot) {
 		return;
 	}
 
 	if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS) {
+		spr->filepath = "Textures/projectile_up.png";
 		transform->position = posPlayer->position + glm::vec2(0.f, -50.f);
 		currDir = glm::vec2(0.f, -1.f);
 		shot = true;
 	}
 
 	if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS) {
+		spr->filepath = "Textures/projectile_down.png";
 		transform->position = posPlayer->position + glm::vec2(0.f, 50.f);
 		currDir = glm::vec2(0.f, 1.f);
 		shot = true;
 	}
 
 	if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS) {
+		spr->filepath = "Textures/projectile_left.png";
 		transform->position = posPlayer->position + glm::vec2(-50.f, 0.f);
 		currDir = glm::vec2(-1.f, 0.f);
 		shot = true;
 	}
 
 	if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS) {
+		spr->filepath = "Textures/projectile_right.png";
 		transform->position = posPlayer->position + glm::vec2(50.f, 0.f);
 		currDir = glm::vec2(1.f, 0.f);
 		shot = true;
@@ -49,7 +53,7 @@ void BallScript::tickScript(float deltaTime) {
 
 	controlShoot();
 
-	transform->position += currDir * deltaTime / 2.f;
+	transform->position += currDir * deltaTime;
 
 	if (transform->position.x < 0 || transform->position.x > 1600 || transform->position.y < 0 || transform->position.y > 800) {
 		transform->position = glm::vec2(-100.f, -100.f);
@@ -69,7 +73,7 @@ void BallScript::CheckCollisions() {
 
 		if (other_ent->getEntityId() == entity->getEntityId() || other_ent->getEntityId() == player->getEntityId()) {
 			return;
-		}
+		} 
 
 		ComponentHandle<Transform> other_transform = other_ent->get<Transform>();
 

@@ -19,6 +19,8 @@ public:
 
     void tickScript(float deltaTime) override;
 
+    void checkCollisions();
+
     void Break();
 
 private:
