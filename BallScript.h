@@ -12,15 +12,20 @@ class BallScript : public Script
 
 public:
 
+    void controlShoot();
+
     void startScript() override;
+
+    void setParameters(Entity* obj);
 
     void tickScript(float deltaTime) override;
 
 private:
     void CheckCollisions();
 
+    Entity* player;
     glm::vec2 currDir = glm::vec2(0., 1.);
     glm::vec2 limits = glm::vec2(1500., 700.);
-    bool destroyed = false;
+    bool shot = false;
 
 };

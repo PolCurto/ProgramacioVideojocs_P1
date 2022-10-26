@@ -3,7 +3,6 @@
 void BlockScript::setParameters(Entity* obj, int secs) {
 	target = obj;
 	delay = secs;
-
 }
 
 void BlockScript::moveToTarget(float deltaTime) {
@@ -13,7 +12,7 @@ void BlockScript::moveToTarget(float deltaTime) {
 
 	if (!notSpawned) {
 		currDir = glm::normalize(posObj->position - posTarget->position);
-		posObj->position -= currDir * deltaTime / 2.f;
+		posObj->position -= currDir * deltaTime / 4.f;
 	}
 
 }

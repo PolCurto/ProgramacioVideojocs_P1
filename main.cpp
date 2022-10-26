@@ -87,8 +87,6 @@ Entity* CreateEntity(glm::vec2 position, float rotation, float scale, const char
 
 void SetupWorld() {
 
-	cout << "World" << endl;
-
 	world = World::createWorld();
 	world->registerSystem(new RenderSystem(width, height));
 	ScriptSystem* scriptSystem = new ScriptSystem();
@@ -101,14 +99,15 @@ void SetupWorld() {
 	Entity* paddle_ent = CreateEntity(glm::vec2(400.f, 400.f), 0.f, 1.f, "Textures/main_character.png", glm::vec3(1., 1., 1.));
 	paddle_ent->assign<BoxCollider>(80.f, 80.f);
 
-	Entity* ball_ent = CreateEntity(glm::vec2(400.f, 300.f), 0.f, 1.f, "Textures/ball_blue_small.png", glm::vec3(1., 1., 1.));
+	PaddleScript* paddle_script = new PaddleScript(window, world, paddle_ent);
+	paddle_ent->assign<ScriptComponent>(scriptManager->AddScript(paddle_script));
+
+	Entity* ball_ent = CreateEntity(glm::vec2(1000.f, 1100.f), 0.f, 1.f, "Textures/ball_blue_small.png", glm::vec3(1., 1., 1.));
 	ball_ent->assign<BoxCollider>(32.f, 32.f);
 
 	BallScript* ball_script = new BallScript(window, world, ball_ent);
+	ball_script->setParameters(paddle_ent);
 	ball_ent->assign<ScriptComponent>(scriptManager->AddScript(ball_script));
-
-	PaddleScript* paddle_script = new PaddleScript(window, world, paddle_ent);
-	paddle_ent->assign<ScriptComponent>(scriptManager->AddScript(paddle_script));
 
 	for (int i = 0; i < 10; i++) {
 		Entity* block_ent = CreateEntity(glm::vec2(2000.f, 2000.f), 0.f, 1.f, "Textures/enemy.png", glm::vec3(1., 1., 1.));
