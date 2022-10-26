@@ -27,7 +27,8 @@ private:
     glm::vec2 currDir;
     bool notSpawned = true;
     int delay;
-    int hp = 2;
+    int hp = 3;
     bool destroyed = false;
+    float stage = 1;
 
 };

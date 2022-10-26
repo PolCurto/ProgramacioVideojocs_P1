@@ -12,7 +12,7 @@ void BlockScript::moveToTarget(float deltaTime) {
 
 	if (!notSpawned) {
 		currDir = glm::normalize(posObj->position - posTarget->position);
-		posObj->position -= currDir * deltaTime / 4.f;
+		posObj->position -= (currDir * deltaTime / 5.f) * (stage / 1.5f);
 	}
 
 }
@@ -42,13 +42,26 @@ void BlockScript::tickScript(float deltaTime) {
 
 	ComponentHandle<BoxCollider> collider = entity->get<BoxCollider>();
 
+	ComponentHandle<Sprite> spr = entity->get<Sprite>();
+
 	if (collider->collidedWith) {
-		hp--;
+		cout << hp << endl;
 		collider->collidedWith = false;
+		hp--;
+
+		if (hp == 2) {
+			spr->filepath = "Textures/enemy 2.png";
+			stage = 2;
+		}
+
+		if (hp == 1) {
+			spr->filepath = "Textures/enemy 3.png";
+			stage = 3;
+		}
 
 		if (hp <= 0) {
-			destroyed = true;
 			world->destroy(entity);
+			destroyed = true;
 		}
 	}
 

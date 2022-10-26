@@ -110,7 +110,7 @@ void SetupWorld() {
 	ball_ent->assign<ScriptComponent>(scriptManager->AddScript(ball_script));
 
 	for (int i = 0; i < 10; i++) {
-		Entity* block_ent = CreateEntity(glm::vec2(2000.f, 2000.f), 0.f, 1.f, "Textures/enemy.png", glm::vec3(1., 1., 1.));
+		Entity* block_ent = CreateEntity(glm::vec2(2000.f, 2000.f), 0.f, 1.f, "Textures/enemy 1.png", glm::vec3(1., 1., 1.));
 		block_ent->assign<BoxCollider>(80.f, 80.f);
 
 		BlockScript* block_script = new BlockScript(window, world, block_ent);

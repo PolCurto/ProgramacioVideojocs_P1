@@ -171,10 +171,16 @@
     <Image Include="Textures\main_character.png">
       <Filter>Archivos de recursos\Textures</Filter>
     </Image>
-    <Image Include="Textures\enemy.png">
+    <Image Include="Textures\Room.png">
       <Filter>Archivos de recursos\Textures</Filter>
     </Image>
-    <Image Include="Textures\Room.png">
+    <Image Include="Textures\enemy 1.png">
+      <Filter>Archivos de recursos\Textures</Filter>
+    </Image>
+    <Image Include="Textures\enemy 2.png">
+      <Filter>Archivos de recursos\Textures</Filter>
+    </Image>
+    <Image Include="Textures\enemy 3.png">
       <Filter>Archivos de recursos\Textures</Filter>
     </Image>
   </ItemGroup>

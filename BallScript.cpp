@@ -85,9 +85,6 @@ void BallScript::CheckCollisions() {
 			shot = false;
 			other_collider->collidedWith = true;
 		}
-		
-
-
 	});
 
 }

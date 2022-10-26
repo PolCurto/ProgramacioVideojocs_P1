@@ -193,7 +193,9 @@
     <Image Include="Textures\ball_blue_small.png" />
     <Image Include="Textures\button_blue.png" />
     <Image Include="Textures\button_yellow.png" />
-    <Image Include="Textures\enemy.png" />
+    <Image Include="Textures\enemy 1.png" />
+    <Image Include="Textures\enemy 2.png" />
+    <Image Include="Textures\enemy 3.png" />
     <Image Include="Textures\main_character.png" />
     <Image Include="Textures\Room.png" />
     <Image Include="Textures\science_dog.png" />
