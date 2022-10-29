@@ -22,6 +22,7 @@
 #include "PaddleScript.h"
 #include "BlockScript.h"
 #include "Script.h"
+#include "GameManagerScript.h"
 
 #include "ECS.h"
 
@@ -94,7 +95,8 @@ void SetupWorld() {
 
 	ScriptManager* scriptManager = scriptSystem->getScriptManager();
 
-	Entity* bg_ent = CreateEntity(glm::vec2(800.f, 400.f), 0.f, 1.f, "Textures/room.png", glm::vec3(1., 1., 1.), false, glm::vec2(width, height));
+	Entity* gameManager_ent = CreateEntity(glm::vec2(800.f, 400.f), 0.f, 1.f, "Textures/room.png", glm::vec3(1., 1., 1.), false, glm::vec2(width, height));
+	GameManagerScript* gameManager = new GameManagerScript(window, world, gameManager_ent);
 
 	Entity* paddle_ent = CreateEntity(glm::vec2(400.f, 400.f), 0.f, 1.f, "Textures/main_character 1.png", glm::vec3(1., 1., 1.));
 	paddle_ent->assign<BoxCollider>(80.f, 80.f);
@@ -109,6 +111,10 @@ void SetupWorld() {
 	ball_script->setParameters(paddle_ent);
 	ball_ent->assign<ScriptComponent>(scriptManager->AddScript(ball_script));
 
+	gameManager_ent->assign<ScriptComponent>(scriptManager->AddScript(gameManager));
+	
+	gameManager->addPlayer(paddle_script);
+
 	for (int i = 0; i < 20; i++) {
 		Entity* block_ent = CreateEntity(glm::vec2(2000.f, 2000.f), 0.f, 1.f, "Textures/enemy 1.png", glm::vec3(1., 1., 1.));
 		block_ent->assign<BoxCollider>(80.f, 80.f);
@@ -116,7 +122,10 @@ void SetupWorld() {
 		BlockScript* block_script = new BlockScript(window, world, block_ent);
 		block_script->setParameters(paddle_ent, 2 * (1 + i));
 		block_ent->assign<ScriptComponent>(scriptManager->AddScript(block_script));
+
+		gameManager->addEnemy(block_script);
 	}
+	
 }
 
 int main() {
@@ -144,9 +153,6 @@ int main() {
 		time = clock();
 		if (dt < 50) {
 			world->tick(dt);
-		}
-
-		if () {
 		}
 
 		glfwSwapBuffers(window); //Swap buffers

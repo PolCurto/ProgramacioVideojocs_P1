@@ -148,6 +148,7 @@
     <ClCompile Include="BlockScript.cpp" />
     <ClCompile Include="Components.cpp" />
     <ClCompile Include="EBO.cpp" />
+    <ClCompile Include="GameManagerScript.cpp" />
     <ClCompile Include="glad.c" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="PaddleScript.cpp" />
@@ -176,6 +177,7 @@
     <ClInclude Include="EBO.h" />
     <ClInclude Include="ECS.h" />
     <ClInclude Include="Components.h" />
+    <ClInclude Include="GameManagerScript.h" />
     <ClInclude Include="PaddleScript.h" />
     <ClInclude Include="ScriptManager.h" />
     <ClInclude Include="RenderSystem.h" />
@@ -192,6 +194,7 @@
     <Image Include="Textures\enemy 1.png" />
     <Image Include="Textures\enemy 2.png" />
     <Image Include="Textures\enemy 3.png" />
+    <Image Include="Textures\game_over.png" />
     <Image Include="Textures\main_character 1.png" />
     <Image Include="Textures\main_character 2.png" />
     <Image Include="Textures\main_character 3.png" />
