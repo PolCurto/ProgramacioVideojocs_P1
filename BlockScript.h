@@ -17,6 +17,8 @@ public:
 
     void spawn();
 
+    void endGame();
+
     void tickScript(float deltaTime) override;
 
     void checkCollisions();

@@ -70,6 +70,10 @@ void BlockScript::tickScript(float deltaTime) {
 
 }
 
+void BlockScript::endGame() {
+	world->destroy(entity);
+}
+
 void BlockScript::checkCollisions() {
 
 	ComponentHandle<Transform> transform = entity->get<Transform>();
