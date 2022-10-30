@@ -23,6 +23,7 @@
 #include "BlockScript.h"
 #include "Script.h"
 #include "GameManagerScript.h"
+#include "BossScript.h"
 
 #include "ECS.h"
 
@@ -97,6 +98,7 @@ void SetupWorld() {
 
 	Entity* gameManager_ent = CreateEntity(glm::vec2(800.f, 400.f), 0.f, 1.f, "Textures/room.png", glm::vec3(1., 1., 1.), false, glm::vec2(width, height));
 	GameManagerScript* gameManager = new GameManagerScript(window, world, gameManager_ent);
+	gameManager_ent->assign<ScriptComponent>(scriptManager->AddScript(gameManager));
 
 	Entity* paddle_ent = CreateEntity(glm::vec2(400.f, 400.f), 0.f, 1.f, "Textures/main_character 1.png", glm::vec3(1., 1., 1.));
 	paddle_ent->assign<BoxCollider>(80.f, 80.f);
@@ -111,8 +113,13 @@ void SetupWorld() {
 	ball_script->setParameters(paddle_ent);
 	ball_ent->assign<ScriptComponent>(scriptManager->AddScript(ball_script));
 
-	gameManager_ent->assign<ScriptComponent>(scriptManager->AddScript(gameManager));
-	
+	Entity* boss_ent = CreateEntity(glm::vec2(-500.f, -500.f), 0.f, 1.f, "Textures/boss 1.png", glm::vec3(1., 1., 1.));
+	boss_ent->assign<BoxCollider>(100.f, 100.f);
+	BossScript* boss_script = new BossScript(window, world, boss_ent);
+	boss_script->setParameters(paddle_ent, 45);
+	boss_ent->assign<ScriptComponent>(scriptManager->AddScript(boss_script));
+
+	gameManager->addBoss(boss_script);
 	gameManager->addPlayer(paddle_script);
 
 	for (int i = 0; i < 20; i++) {

@@ -1,6 +1,7 @@
 #include "GameManagerScript.h"
 #include "PaddleScript.h"
 #include "BlockScript.h"
+#include "BossScript.h"
 
 void GameManagerScript::tickScript(float deltaTime) {
 
@@ -21,5 +22,9 @@ void GameManagerScript::addPlayer(PaddleScript* player) {
 
 void GameManagerScript::addEnemy(BlockScript* enemy) {
 	this->enemies.push_back(enemy);
-
 }
+
+void GameManagerScript::addBoss(BossScript* boss) {
+	this->boss = boss;
+}
+

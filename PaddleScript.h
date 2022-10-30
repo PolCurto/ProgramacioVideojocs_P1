@@ -19,9 +19,13 @@ public:
 
     bool isAlive();
 
+    void checkVulnerability();
+
 private:
 
     int hp = 3;
     bool alive = true;
     float stage = 1;
+    bool invulnerable = false;
+    int timeRef;
 };
