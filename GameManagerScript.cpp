@@ -11,7 +11,13 @@ void GameManagerScript::tickScript(float deltaTime) {
 		for (int i = 0; i < enemies.size(); i++) {
 			enemies[i]->endGame();
 		}
-		spr->filepath = "textures/game_over.png";
+		boss->endGame();
+		spr->filepath = "Textures/game_over.png";
+	}
+
+	if (boss->isDestroyed()) {
+		spr->filepath = "Textures/you_win.png";
+		player->endGame();
 	}
 
 }

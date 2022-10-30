@@ -102,6 +102,14 @@ void PaddleScript::checkHits() {
 
 }
 
+void PaddleScript::endGame() {
+	ComponentHandle<Transform> transform = entity->get<Transform>();
+
+	alive = false;
+	transform->position = glm::vec2(-100.f, -100.f);
+	
+}
+
 void PaddleScript::checkVulnerability() {
 
 	ComponentHandle<Sprite> spr = entity->get<Sprite>();

@@ -21,6 +21,8 @@ public:
 
     void checkVulnerability();
 
+    void endGame();
+
 private:
 
     int hp = 3;

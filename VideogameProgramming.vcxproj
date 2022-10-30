@@ -209,6 +209,7 @@
     <Image Include="Textures\projectile_left.png" />
     <Image Include="Textures\projectile_up.png" />
     <Image Include="Textures\Room.png" />
+    <Image Include="Textures\you_win.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

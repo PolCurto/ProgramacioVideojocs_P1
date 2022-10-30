@@ -23,6 +23,8 @@ public:
 
     void checkCollisions();
 
+    bool isDestroyed();
+
     void Break();
 
 private:
@@ -34,5 +36,4 @@ private:
     bool destroyed = false;
     int delay;
     float stage = 1;
-
 };

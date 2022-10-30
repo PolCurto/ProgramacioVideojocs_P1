@@ -69,6 +69,10 @@ void BossScript::tickScript(float deltaTime) {
 
 }
 
+bool BossScript::isDestroyed() {
+	return destroyed;
+}
+
 void BossScript::endGame() {
 	world->destroy(entity);
 }
