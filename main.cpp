@@ -110,7 +110,7 @@ void SetupWorld() {
 	ball_ent->assign<BoxCollider>(32.f, 32.f);
 
 	BallScript* ball_script = new BallScript(window, world, ball_ent);
-	ball_script->setParameters(paddle_ent);
+	ball_script->setTarget(paddle_ent);
 	ball_ent->assign<ScriptComponent>(scriptManager->AddScript(ball_script));
 
 	Entity* boss_ent = CreateEntity(glm::vec2(-500.f, -500.f), 0.f, 1.f, "Textures/boss 1.png", glm::vec3(1., 1., 1.));

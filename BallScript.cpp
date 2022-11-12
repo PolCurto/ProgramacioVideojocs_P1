@@ -3,8 +3,8 @@
 void BallScript::startScript() {
 }
 
-void BallScript::setParameters(Entity* obj) {
-	player = obj;
+void BallScript::setTarget(Entity* player) {
+	this->player = player;
 }
 
 void BallScript::controlShoot() {
@@ -55,7 +55,7 @@ void BallScript::tickScript(float deltaTime) {
 
 	transform->position += currDir * deltaTime;
 
-	if (transform->position.x < 0 || transform->position.x > 1600 || transform->position.y < 0 || transform->position.y > 800) {
+	if (transform->position.x < 120 || transform->position.x > 1480 || transform->position.y < 120 || transform->position.y > 680) {
 		transform->position = glm::vec2(-100.f, -100.f);
 		shot = false;
 	}

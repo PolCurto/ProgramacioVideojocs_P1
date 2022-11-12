@@ -16,7 +16,7 @@ public:
 
     void startScript() override;
 
-    void setParameters(Entity* obj);
+    void setTarget(Entity* player);
 
     void tickScript(float deltaTime) override;
 
