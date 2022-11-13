@@ -93,6 +93,9 @@
     <ClCompile Include="BossScript.cpp">
       <Filter>Archivos de origen\Scripts</Filter>
     </ClCompile>
+    <ClCompile Include="BossProjectileScript.cpp">
+      <Filter>Archivos de origen\Scripts</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="default.vert">
@@ -163,6 +166,9 @@
     <ClInclude Include="BossScript.h">
       <Filter>Archivos de encabezado\Scripts</Filter>
     </ClInclude>
+    <ClInclude Include="BossProjectileScript.h">
+      <Filter>Archivos de encabezado\Scripts</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Textures\Room.png">
@@ -214,6 +220,9 @@
       <Filter>Archivos de recursos\Textures</Filter>
     </Image>
     <Image Include="Textures\you_win.png">
+      <Filter>Archivos de recursos\Textures</Filter>
+    </Image>
+    <Image Include="Textures\boss_projectile.png">
       <Filter>Archivos de recursos\Textures</Filter>
     </Image>
   </ItemGroup>

@@ -11,7 +11,7 @@ class BossScript : public Script
 
 public:
 
-    void setParameters(Entity* obj, int delay);
+    void setEntities(Entity* player, Entity* projectile);
 
     void moveToTarget(float deltaTime);
 
@@ -25,15 +25,18 @@ public:
 
     bool isDestroyed();
 
+    int getStage();
+
     void Break();
 
 private:
 
-    Entity* target;
+    Entity* player;
+    Entity* projectile;
     glm::vec2 currDir;
     bool notSpawned = true;
-    int hp = 15;
+    int hp = 20;
     bool destroyed = false;
-    int delay;
+    int delay = 45;
     float stage = 1;
 };

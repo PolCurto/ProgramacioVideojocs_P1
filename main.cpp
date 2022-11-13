@@ -24,6 +24,7 @@
 #include "Script.h"
 #include "GameManagerScript.h"
 #include "BossScript.h"
+#include "BossProjectileScript.h"
 
 #include "ECS.h"
 
@@ -100,7 +101,7 @@ void SetupWorld() {
 	GameManagerScript* gameManager = new GameManagerScript(window, world, gameManager_ent);
 	gameManager_ent->assign<ScriptComponent>(scriptManager->AddScript(gameManager));
 
-	Entity* paddle_ent = CreateEntity(glm::vec2(400.f, 400.f), 0.f, 1.f, "Textures/main_character 1.png", glm::vec3(1., 1., 1.));
+	Entity* paddle_ent = CreateEntity(glm::vec2(800.f, 400.f), 0.f, 1.f, "Textures/main_character 1.png", glm::vec3(1., 1., 1.));
 	paddle_ent->assign<BoxCollider>(80.f, 80.f);
 
 	PaddleScript* paddle_script = new PaddleScript(window, world, paddle_ent);
@@ -110,16 +111,25 @@ void SetupWorld() {
 	ball_ent->assign<BoxCollider>(32.f, 32.f);
 
 	BallScript* ball_script = new BallScript(window, world, ball_ent);
-	ball_script->setTarget(paddle_ent);
-	ball_ent->assign<ScriptComponent>(scriptManager->AddScript(ball_script));
 
 	Entity* boss_ent = CreateEntity(glm::vec2(-500.f, -500.f), 0.f, 1.f, "Textures/boss 1.png", glm::vec3(1., 1., 1.));
 	boss_ent->assign<BoxCollider>(100.f, 100.f);
 	BossScript* boss_script = new BossScript(window, world, boss_ent);
-	boss_script->setParameters(paddle_ent, 45);
+
+	Entity* boss_projectile_ent = CreateEntity(glm::vec2(-200.f, -200.f), 0.f, 1.f, "Textures/boss_projectile.png", glm::vec3(1., 1., 1.));
+	boss_projectile_ent->assign<BoxCollider>(32.f, 32.f);
+
+	ball_script->setEntities(paddle_ent, boss_projectile_ent);
+	ball_ent->assign<ScriptComponent>(scriptManager->AddScript(ball_script));
+
+	boss_script->setEntities(paddle_ent, boss_projectile_ent);
 	boss_ent->assign<ScriptComponent>(scriptManager->AddScript(boss_script));
 
-	gameManager->addBoss(boss_script);
+	BossProjectileScript* boss_projectile_script = new BossProjectileScript(window, world, boss_projectile_ent);
+	boss_projectile_script->setEntities(paddle_ent, boss_ent, ball_ent);
+	boss_projectile_ent->assign<ScriptComponent>(scriptManager->AddScript(boss_projectile_script));
+
+	gameManager->addBoss(boss_script, boss_projectile_script);
 	gameManager->addPlayer(paddle_script);
 
 	for (int i = 0; i < 20; i++) {

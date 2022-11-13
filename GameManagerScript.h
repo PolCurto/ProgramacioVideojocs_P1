@@ -4,6 +4,7 @@
 #include "BlockScript.h"
 #include "PaddleScript.h"
 #include "BossScript.h"
+#include "BossProjectileScript.h"
 
 using namespace std;
 
@@ -20,7 +21,7 @@ public:
 
     void addEnemy(BlockScript* enemy);
 
-    void addBoss(BossScript* boss);
+    void addBoss(BossScript* boss, BossProjectileScript* projectile);
 
     void spawnBoss();
 
@@ -29,4 +30,5 @@ private:
     std::vector <BlockScript*> enemies;
     PaddleScript* player;
     BossScript* boss;
+    BossProjectileScript* projectile;
 };

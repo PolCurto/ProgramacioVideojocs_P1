@@ -4,7 +4,7 @@
 
 using namespace std;
 
-class BallScript : public Script
+class BossProjectileScript : public Script
 {
 
     using Script::Script;
@@ -13,9 +13,11 @@ public:
 
     void startScript() override;
 
-    void setEntities(Entity* player, Entity* boss_projectile);
-
     void tickScript(float deltaTime) override;
+
+    void setEntities(Entity* player, Entity* boss, Entity* player_projectile);
+
+    void endGame();
 
 private:
 
@@ -24,8 +26,9 @@ private:
     void CheckCollisions();
 
     Entity* player;
-    Entity* boss_projectile;
-    glm::vec2 currDir = glm::vec2(0., 1.);
+    Entity* boss;
+    Entity* player_projectile;
+    int delay = 46;
+    glm::vec2 currDir;
     bool spawned = false;
-
 };

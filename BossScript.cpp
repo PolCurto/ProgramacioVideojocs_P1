@@ -1,18 +1,24 @@
 #include "BossScript.h"
 
-void BossScript::setParameters(Entity* obj, int delay) {
-	target = obj;
-	this->delay = delay;
+void BossScript::setEntities(Entity* player, Entity* projectile) {
+	this->player = player;
+	this->projectile = projectile;
 }
 
 void BossScript::moveToTarget(float deltaTime) {
 
 	ComponentHandle<Transform> posObj = entity->get<Transform>();
-	ComponentHandle<Transform> posTarget = target->get<Transform>();
+	ComponentHandle<Transform> posTarget = player->get<Transform>();
 
 	if (!notSpawned) {
-		currDir = glm::normalize(posObj->position - posTarget->position);
-		posObj->position -= (currDir * deltaTime / 5.f) * (stage / 1.25f);
+		if (stage == 2) {
+			currDir = glm::normalize(posObj->position - posTarget->position);
+			posObj->position -= (currDir * deltaTime / 5.f);
+		}
+		if (stage == 3) {
+			currDir = glm::normalize(posObj->position - posTarget->position);
+			posObj->position -= (currDir * deltaTime / 2.5f);
+		}
 	}
 
 }
@@ -22,14 +28,8 @@ void BossScript::spawn() {
 
 	if (notSpawned) {
 		if (glfwGetTime() > delay) {
-			if (rand() % 100 > 50) {
-				posObj->position.x = 200;
-				posObj->position.y = 400;
-			}
-			else {
-				posObj->position.x = 1400;
-				posObj->position.y = 400;
-			}
+			posObj->position.x = 200;
+			posObj->position.y = 400;
 			notSpawned = false;
 		}
 	}
@@ -77,6 +77,10 @@ void BossScript::endGame() {
 	world->destroy(entity);
 }
 
+int BossScript::getStage() {
+	return stage;
+}
+
 void BossScript::checkCollisions() {
 
 	ComponentHandle<Transform> transform = entity->get<Transform>();
@@ -84,7 +88,7 @@ void BossScript::checkCollisions() {
 
 	world->each<BoxCollider>([&](Entity* other_ent, ComponentHandle<BoxCollider> other_collider) {
 
-		if (!(other_ent->getEntityId() == target->getEntityId())) {
+		if (other_ent->getEntityId() != player->getEntityId()) {
 			return;
 		}
 

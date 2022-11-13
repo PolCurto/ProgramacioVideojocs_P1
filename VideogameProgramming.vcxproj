@@ -146,6 +146,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="BlockScript.cpp" />
+    <ClCompile Include="BossProjectileScript.cpp" />
     <ClCompile Include="BossScript.cpp" />
     <ClCompile Include="Components.cpp" />
     <ClCompile Include="EBO.cpp" />
@@ -175,6 +176,7 @@
   <ItemGroup>
     <ClInclude Include="BallScript.h" />
     <ClInclude Include="BlockScript.h" />
+    <ClInclude Include="BossProjectileScript.h" />
     <ClInclude Include="BossScript.h" />
     <ClInclude Include="EBO.h" />
     <ClInclude Include="ECS.h" />
@@ -196,6 +198,7 @@
     <Image Include="Textures\boss 1.png" />
     <Image Include="Textures\boss 2.png" />
     <Image Include="Textures\boss 3.png" />
+    <Image Include="Textures\boss_projectile.png" />
     <Image Include="Textures\enemy 1.png" />
     <Image Include="Textures\enemy 2.png" />
     <Image Include="Textures\enemy 3.png" />
