@@ -29,5 +29,5 @@ private:
     bool alive = true;
     float stage = 1;
     bool invulnerable = false;
-    int timeRef;
+    float timeRef;
 };

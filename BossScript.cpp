@@ -88,9 +88,10 @@ void BossScript::checkCollisions() {
 
 	world->each<BoxCollider>([&](Entity* other_ent, ComponentHandle<BoxCollider> other_collider) {
 
-		if (other_ent->getEntityId() != player->getEntityId()) {
+		if (other_ent->getEntityId() == entity->getEntityId() || other_ent->getEntityId() == projectile->getEntityId()) {
 			return;
 		}
+
 
 		ComponentHandle<Transform> other_transform = other_ent->get<Transform>();
 

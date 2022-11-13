@@ -67,9 +67,9 @@ void BossProjectileScript::CheckCollisions() {
 			p1.y - collider->height / 2 < p2.y + other_collider->height / 2 &&
 			p1.y + collider->height / 2 > p2.y - other_collider->height / 2)
 		{
+			other_collider->collidedWith = true;
 			transform->position = glm::vec2(-100.f, -100.f);
 			spawned = false;
-			other_collider->collidedWith = true;
 		}
 		});
 

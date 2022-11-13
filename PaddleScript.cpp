@@ -72,12 +72,18 @@ void PaddleScript::checkHits() {
 	ComponentHandle<Transform> transform = entity->get<Transform>();
 	ComponentHandle<Sprite> spr = entity->get<Sprite>();
 
-	if (!invulnerable) {
+	if (invulnerable) {
+		spr->filepath = "Textures/main_character 4.png";
+	}
 
-		if (collider->collidedWith) {
-			collider->collidedWith = false;
+	if (collider->collidedWith) {
+		
+		collider->collidedWith = false;
+
+		if (!invulnerable) {
 			hp--;
 			timeRef = glfwGetTime();
+			invulnerable = true;
 
 			if (hp == 2) {
 				spr->filepath = "Textures/main_character 2.png";
@@ -93,12 +99,10 @@ void PaddleScript::checkHits() {
 				transform->position = glm::vec2(-100.f, -100.f);
 				alive = false;
 			}
-			invulnerable = true;
 		}
 	}
-	else {
-		spr->filepath = "Textures/main_character 4.png";
-	}
+	
+	
 
 }
 
@@ -115,7 +119,8 @@ void PaddleScript::checkVulnerability() {
 	ComponentHandle<Sprite> spr = entity->get<Sprite>();
 
 	if (invulnerable) {
-		if (glfwGetTime() > timeRef + 1) {
+
+		if (glfwGetTime() > timeRef + 1.) {
 			invulnerable = false;
 			if (stage == 1) {
 				spr->filepath = "Textures/main_character 1.png";

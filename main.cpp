@@ -58,7 +58,7 @@ void SetupGLFW() {
 
 bool SetupWindow() {
 	//Create a GLFWwindow with size 800x800
-	window = glfwCreateWindow(width, height, "Goty", NULL, NULL);
+	window = glfwCreateWindow(width, height, "The binding of isaac 0.1", NULL, NULL);
 	if (window == NULL) {
 
 		std::cout << "Failed to create GLFW window" << std::endl;
@@ -113,7 +113,7 @@ void SetupWorld() {
 	BallScript* ball_script = new BallScript(window, world, ball_ent);
 
 	Entity* boss_ent = CreateEntity(glm::vec2(-500.f, -500.f), 0.f, 1.f, "Textures/boss 1.png", glm::vec3(1., 1., 1.));
-	boss_ent->assign<BoxCollider>(100.f, 100.f);
+	boss_ent->assign<BoxCollider>(90.f, 90.f);
 	BossScript* boss_script = new BossScript(window, world, boss_ent);
 
 	Entity* boss_projectile_ent = CreateEntity(glm::vec2(-200.f, -200.f), 0.f, 1.f, "Textures/boss_projectile.png", glm::vec3(1., 1., 1.));
